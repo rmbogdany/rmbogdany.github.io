@@ -34,7 +34,7 @@
 	cursor: pointer;
 	text-decoration: none;
 }
-#nav-menu ul li a span:before{
+#nav-menu ul li a span::before{
 	border-radius: 50%;
 	position: absolute;
 	z-index: 1;
