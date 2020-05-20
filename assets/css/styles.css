@@ -6,17 +6,11 @@
 
 /* Nav Menu */
 #nav-menu{
-	height:300px;
 	top:50%;
 	right:0;
 	margin-top:-150px;
 	position: fixed;
 	list-style: none;
-}
-#nav-menu ul{
-	background-color:#f8f8ff;
-	border-radius: 20px;
-	padding: 4px 0;
 }
 #nav-menu ul li{
 	display: block;
@@ -38,10 +32,10 @@
 	border-radius: 50%;
 	position: absolute;
 	z-index: 1;
-	height: 6px;
-	width: 6px;
+	height: 14px;
+	width: 14px;
 	border: 0;
-	background: #333;
+	background: rgba(255,255,255,0.2);
 	left: 50%;
 	top: 50%;
 	margin: -3px 0 0 -3px;
