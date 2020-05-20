@@ -46,10 +46,3 @@
 	top: 50%;
 	margin: -3px 0 0 -3px;
 }
-#nav-menu ul li a span{
-	display: none;
-	left: -15px;
-}
-#nav-menu ul li a span:hover{
-	display: block;
-}
