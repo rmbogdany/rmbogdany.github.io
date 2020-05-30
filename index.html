@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Rachael Bogdany</title>
+	<script src="assets/js/index.js"></script>
 	<link rel="stylesheet" href="assets/css/styles.css"/>
 	<!-- jQuery CDN -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
@@ -13,7 +14,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 </head>
-<body>
+<body onload="setUp()">
 	<nav id="nav-menu">
 		<a href="#intro" class="active"><div>Intro</div><span></span></a>
 		<a href="#about" class=""><div>About Me</div><span></span></a>
@@ -22,6 +23,20 @@
 		<a href="#design" class=""><div>Designs</div><span></span></a>
 		<a href="#resume" class=""><div>Resume</div><span></span></a>
 	</nav>
-	<div id="intro">Hi</div>
+	<section id="intro">Introduction</section>
+	<section id="about">About</section>
+	<section id="experience">Experience</section>
+	<section id="Projects">Projects
+		<div id="fishContainer">
+			<button id="startButton" onclick="initialize()">Start</button>
+			<button id="pauseButton" onclick="pauseGame()"></button>
+			<button id="playButton" onclick="playGame()"></button>
+			<button id="resetButton" onclick="initialize()">Try Again</button>
+			<button id="stopButton" onclick="stopGame()">End Game</button>
+		</div>
+		<img id="fishGame" src="" />
+	</section>
+	<section id="Design">Design</section>
+	<section id="Resume">Resume</section>
 </body>
 </html>

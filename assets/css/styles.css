@@ -8,13 +8,23 @@ html {
 	scroll-behavior: smooth; 
 }
 
-/* Nav Menu */
+section{
+	min-height: 75vh;
+	background-color: #DDDDDD;
+	margin-bottom: 50px;
+	min-width: 700px;
+}
+
+/* 
+	Nav Menu 
+*/
 #nav-menu{
 	top:50%;
 	right:15px;
 	margin-top:-80px;
 	position: fixed;
 	transition: 1s all cubic-bezier(0.23, 1, 0.32, 1);
+	z-index: 100;
 }
 
 #nav-menu a span{
@@ -63,4 +73,159 @@ html {
 
 #nav-menu .active span{
 	border: 2px solid rgba(0,0,0,0.4);
+}
+
+/*
+	Projects
+*/
+
+#resetButton{
+	position: absolute; 
+	top:50%; 
+	margin-top: -63px;
+	left:50%;
+	margin-left: -155px;
+	width: 326px;
+	height: 126px;
+	background: #010303;
+	background: -webkit-linear-gradient(#010303, #073763);
+	background: linear-gradient(#010303, #073763);
+	border-radius: 5px;
+	color: #ffffff;
+	display: none;
+	font: normal 700 50px/1 "Calibri", sans-serif;
+	text-align: center;
+	text-shadow: 1px 1px #000000;
+	z-index: 100;
+}
+
+#resetButton:hover{
+	cursor: pointer;
+}
+
+#playButton{
+	position: absolute; 
+	top:50%; 
+	left:50%; 
+	margin-left: -60px;
+	margin-top: -60px;
+	z-index: 1;
+	display: none;
+	width: 148px;
+	height: 148px;
+	border-style: solid;
+	border-width: 74px 0px 74px 148px;
+	box-sizing: border-box;
+	border-color: transparent transparent transparent #202020;
+	background: transparent;
+}
+
+#playButton:hover{
+	cursor: pointer;
+}
+
+#pauseButton{
+	position: absolute; 
+	top:30px; 
+	left:30px; 
+	border-style: double;
+	width: 40px;
+	height: 40px;
+	display: none;
+	border-style: solid;
+	border-width: 37px;
+	border-color: #202020;
+	border-width: 0px 15px 0px 15px;
+	background-color: transparent;
+	z-index: 100;
+}
+
+#pauseButton:hover{
+	cursor: pointer;
+}
+
+#stopButton{
+	position: absolute; 
+	right:20px; 
+	top:30px; 
+	display: none;
+	background-color: transparent;
+	border: 0px;
+	z-index: 100;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#stopButton:hover{
+	cursor: pointer;
+}
+
+#startButton{
+	position: absolute; 
+	top: 50%; 
+	margin-top: -63px;
+	left:50%;
+	margin-left: -155px;
+	width: 326px;
+	height: 126px;
+	display: inline-block;
+	background: #010303;
+	background: -webkit-linear-gradient(#010303, #073763);
+	background: linear-gradient(#010303, #073763);
+	border-radius: 5px;
+	color: #ffffff;
+	font: normal 700 50px/1 "Calibri", sans-serif;
+	text-align: center;
+	text-shadow: 1px 1px #000000;
+}
+
+#startButton:hover{
+	cursor: pointer;
+}
+
+#fishContainer{
+	background:#00BFFF;
+	width: 700px;
+	height: 500px;
+	position: relative;
+	overflow:hidden;
+}
+
+#fishGame{
+	display: none;
+}
+
+@media only screen and (max-width: 700px) {
+	/*
+		Projects
+	*/
+
+	#resetButton{
+		display: none;
+	}
+
+	#playButton{
+		display: none;
+	}
+
+	#pauseButton{
+		display: none;
+	}
+
+
+	#stopButton{
+		display: none;
+	}
+
+	#startButton{
+		display: none;
+	}
+	
+	#fishContainer{
+		display: none;
+	}
+	
+	#fishGame{
+		display: block;
+	}
 }
