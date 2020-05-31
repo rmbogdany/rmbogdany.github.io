@@ -1,6 +1,41 @@
+// Navigation Script
+var navElems;
+var secElems;
+var secLen;
+document.addEventListener("scroll", scrollSection);
+
+function scrollSection(){
+	var closest = Number.MAX_SAFE_INTEGER;
+	var closeElem;
+	var winTop = window.scrollY;
+	for( var i = 0; i < secLen; i++){
+		if(Math.abs(secElems[i].getBoundingClientRect().top) < closest){
+			closest = Math.abs(secElems[i].getBoundingClientRect().top);
+			closeElem = i;
+		}
+	}
+	document.getElementsByClassName('active')[0].classList.remove('active');
+	navElems[closeElem].classList.add('active');
+}
+
+// Fish Game Scripts
+
+// Global Constants
+var player;
+var fishes = [];
+var time;
+var pause = false;
+var requestId;
+var playerImg;
+var fishCounter;
+
 var fishFocus = false;
 
+// Set up after document loads
 function setUp(){
+	secElems = document.getElementsByTagName('section');
+	navElems = document.getElementById('nav-menu').getElementsByTagName('a');
+	secLen = navElems.length;
 	document.getElementById('fishContainer').addEventListener("click", scrollPrevent);
 	document.addEventListener("click", function(e){
 		if(e.target != document.getElementById('fishContainer') && e.target != document.getElementById('startButton') && e.target != document.getElementById('pauseButton') 
@@ -14,12 +49,14 @@ function setUp(){
 }
 
 var arrowKeys = function(e){
+	// prevents default scrolling for arrow keys
 	if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
 		e.preventDefault();
 	}
 }
 
 function scrollPrevent(){
+	// if focused on the fish game prevent scrolling with arrow keys
 	if(!fishFocus){
 		window.document.addEventListener("keydown", arrowKeys);
 	}
@@ -27,22 +64,12 @@ function scrollPrevent(){
 }
 
 function scrollAllow(){
+	// if not focused on fish game allow scrolling with arrow keys
 	if(fishFocus){
 		window.document.removeEventListener("keydown", arrowKeys);
 	}
 	fishFocus = false;
 }
-
-// Fish Game Scripts
-
-// Global Constants
-var player;
-var fishes = [];
-var time;
-var pause = false;
-var requestId;
-var playerImg;
-var fishCounter;
 
 // Initializes the game
 function initialize(){
