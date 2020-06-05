@@ -12,11 +12,10 @@ section{
 	min-height: 75vh;
 	background-color: #DDDDDD;
 	margin-bottom: 50px;
-	min-width: 700px;
+	width: 100%;
 }
 
 img{
-	z-index: 100;
 }
 
 /* 
@@ -195,8 +194,104 @@ img{
 	overflow:hidden;
 }
 
+.arrowkeys{
+	display: none;
+}
+
+#up{
+	z-index: 100;
+	position: absolute;
+	bottom: 31px;
+	right: 45px;
+	padding: 0px 11px 3px 12px;
+}
+
+#down{
+	z-index: 100;
+	position: absolute;
+	bottom: 10px;
+	right: 45px;
+	padding: 0px 11px 3px 12px;
+}
+
+#left{
+	z-index: 100;
+	position: absolute;
+	bottom: 10px;
+	right: 77px;
+	padding: 1px 8px;
+}
+
+#right{
+	z-index: 100;
+	position: absolute;
+	bottom: 10px;
+	right: 13px;
+	padding: 1px 8px;
+}
+
+#highScore{
+	z-index: 100;
+	position: absolute;
+	bottom: 5px;
+	left: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0;
+}
+
+#score{
+	z-index: 100;
+	position: absolute;
+	top: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0;
+	text-align: center;
+	width: 100%;
+	display: none;
+}
+
 #fishGame{
 	display: none;
+}
+
+/*
+	Resume
+*/
+
+#resume{
+	text-align: center;
+	padding-top: 40px;
+	min-height: 0;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+#foot{
+	padding-top: 40px;
+}
+
+#foot a:hover{
+	color: grey;
+}
+
+#foot a:hover i{
+	color: grey;
+}
+
+a:visited {
+	color: black;
+}
+
+#foot i{
+	color: #2867b2;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#foot p{
+	font-size: 12px;
 }
 
 @media only screen and (max-width: 700px) {

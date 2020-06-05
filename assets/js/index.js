@@ -28,7 +28,12 @@ var pause = false;
 var requestId;
 var playerImg;
 var fishCounter;
-
+var upCounter;
+var downCounter;
+var rightCounter;
+var leftCounter;
+var score = 0;
+var highScore;
 var fishFocus = false;
 
 // Set up after document loads
@@ -46,6 +51,31 @@ function setUp(){
 			fishFocus = false;
 		}
 	});
+	
+	// Sets up Fish Game
+	
+	// set up high score
+	highScore = window.localStorage.getItem('rxb9323_highScore');
+	document.getElementById('highScore').innerHTML = '';
+	if(highScore){
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: '+ highScore));
+	}
+	else{
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: 0'));
+	}
+	// adds event listeners to the arrow key buttons
+	var btnUp = document.getElementById("up");
+	btnUp.addEventListener("mousedown", function(){holdit("up");});
+	btnUp.addEventListener("mouseup", function(){releaseit("up");});
+	var btnDown = document.getElementById("down");
+	btnDown.addEventListener("mousedown", function(){holdit("down");});
+	btnDown.addEventListener("mouseup", function(){releaseit("down");});
+	var btnRight = document.getElementById("right");
+	btnRight.addEventListener("mousedown", function(){holdit("right");});
+	btnRight.addEventListener("mouseup", function(){releaseit("right");});
+	var btnLeft = document.getElementById("left");
+	btnLeft.addEventListener("mousedown", function(){holdit("left");});
+	btnLeft.addEventListener("mouseup", function(){releaseit("left");});
 }
 
 var arrowKeys = function(e){
@@ -73,6 +103,16 @@ function scrollAllow(){
 
 // Initializes the game
 function initialize(){
+	score = 0;
+	highScore = window.localStorage.getItem('rxb9323_highScore');
+	document.getElementById('highScore').innerHTML = '';
+	if(highScore){
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: '+ highScore));
+	}
+	else{
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: 0'));
+	}
+	document.getElementById('score').innerHTML = 'Score: 0';
 	var temp = document.getElementById('fishContainer');
 	var len = fishes.length;
 	
@@ -98,6 +138,11 @@ function initialize(){
 	document.getElementById("stopButton").style.display = "inline-block";
 	document.getElementById("resetButton").style.display = "none";
 	document.getElementById("startButton").style.display = "none";
+	document.getElementById("up").style.display = "inline-block";
+	document.getElementById("down").style.display = "inline-block";
+	document.getElementById("right").style.display = "inline-block";
+	document.getElementById("left").style.display = "inline-block";
+	document.getElementById('score').style.display = "inline-block";
 	time = 0;
 	fishes = [];
 	
@@ -421,6 +466,18 @@ function endGame(){
 	window.cancelAnimationFrame(requestId);
 	document.getElementById("resetButton").style.display = "inline-block";
 	document.getElementById("pauseButton").style.display = "none";
+	if(score > highScore){
+		window.localStorage.setItem('rxb9323_highScore', score);
+		highSCore = score;
+	}
+	highScore = window.localStorage.getItem('rxb9323_highScore');
+	document.getElementById('highScore').innerHTML = '';
+	if(highScore){
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: '+ highScore));
+	}
+	else{
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: 0'));
+	}
 }
 
 function stopGame(){
@@ -449,6 +506,69 @@ function stopGame(){
 	document.getElementById("resetButton").style.display = "none";
 	document.getElementById("stopButton").style.display = "none";
 	document.getElementById("startButton").style.display = "inline-block";
+	document.getElementById("up").style.display = "none";
+	document.getElementById("down").style.display = "none";
+	document.getElementById("right").style.display = "none";
+	document.getElementById("left").style.display = "none";
+	document.getElementById("score").style.display = "none";
+	if(score > highScore){
+		window.localStorage.setItem('rxb9323_highScore', score);
+		highSCore = score;
+	}
+	highScore = window.localStorage.getItem('rxb9323_highScore');
+	document.getElementById('highScore').innerHTML = '';
+	if(highScore){
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: '+ highScore));
+	}
+	else{
+		document.getElementById('highScore').appendChild(document.createTextNode('High Score: 0'));
+	}
+}
+
+function repeat(counter){
+	// allows for press and hold of arrow keys
+	switch (counter){
+		case "up":
+			upCounter = setTimeout(function(){repeat(counter);}, 70);
+			updatePlayer(0, -5);
+			break;
+		case "down":
+			downCounter = setTimeout(function(){repeat(counter);}, 70);
+			updatePlayer(0, 5);
+			break;
+		case "left":
+			leftCounter = setTimeout(function(){repeat(counter);}, 70);
+			player.orientation = 0;
+			updatePlayer(-5, 0);
+			break;
+		case "right":
+			rightCounter = setTimeout(function(){repeat(counter);}, 70);
+			player.orientation = 1;
+			updatePlayer(5, 0);
+			break;
+	}
+}
+
+function holdit(counter) {
+	repeat(counter);
+}
+
+function releaseit(counter){
+	// clears the time out when button is released
+	switch (counter){
+		case "up":
+			clearTimeout(upCounter);
+			break;
+		case "down":
+			clearTimeout(downCounter);
+			break;
+		case "left":
+			clearTimeout(leftCounter);
+			break;
+		case "right":
+			clearTimeout(rightCounter);
+			break;
+	}
 }
 
 document.onkeydown = function() {
