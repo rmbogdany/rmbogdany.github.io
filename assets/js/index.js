@@ -443,11 +443,13 @@ function update(){
 	// uses a random number and a time period
 	time += 1;
 	var newFish = Math.round(Math.random());
-	if(((time%100 == 5) || (time%100 == 3)) && (newFish == 0)){
-		createNewFish(1);
-	}
-	if(((time%100 == 0) || (time%100 == 8)) && (newFish == 1)){
-		createNewFish(0);
+	if(fishes.length < 30){
+		if(((time%100 == 5) || (time%100 == 3)) && (newFish == 0)){
+			createNewFish(1);
+		}
+		if(((time%100 == 0) || (time%100 == 8)) && (newFish == 1)){
+			createNewFish(0);
+		}
 	}
 	updateFish();
 	draw();
