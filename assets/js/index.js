@@ -7,12 +7,15 @@ document.addEventListener("scroll", scrollSection);
 function scrollSection(){
 	var closest = Number.MAX_SAFE_INTEGER;
 	var closeElem;
-	var winTop = window.scrollY;
 	for( var i = 0; i < secLen; i++){
 		if(Math.abs(secElems[i].getBoundingClientRect().top) < closest){
 			closest = Math.abs(secElems[i].getBoundingClientRect().top);
 			closeElem = i;
 		}
+	}
+	if($(window).scrollTop() + $(window).height() > $(document).height() - 100){
+		closeElem = secLen-1;
+		console.log(closeElem);
 	}
 	document.getElementsByClassName('active')[0].classList.remove('active');
 	navElems[closeElem].classList.add('active');
